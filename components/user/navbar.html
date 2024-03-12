@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="bg-cyan-900 flex justify-between items-center w-full h-20">
+    <div class="pl-4">
+        <img class="w-auto h-12" src="/assets/images/logo.png" alt="">
+    </div>
+    <div>
+        <ul class="flex gap-12">
+            <li>
+                <a href="/views/user/index.html" class="hover:text-gray-700" href="">Sobre</a>
+            </li>
+            <li>
+                <a href="/views/user/AtividadesView.html" class="hover:text-gray-700" href="">Atividades</a>
+            </li>
+            <li>
+                <a href="/views/user/AlumniView.html" class="hover:text-gray-700" href="">Alumni</a>
+            </li>
+            <li>
+              <p id="welcomeMessage" class="">Olá, </p>
+            </li>
+        </ul>
+    </div>
+    <div class="pr-4">
+        <a href="/views/LoginView.html"><button class="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-gray-800">Login</button></a>
+    </div>
+</nav>
+
+
+</body>
+<script type="module" src="/js/main.js"></script>
+
+</html>
