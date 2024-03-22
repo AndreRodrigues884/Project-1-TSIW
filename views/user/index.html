@@ -1,14 +1,42 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Licenciatura TSIW</title>
 </head>
+
 <body>
-    <div id="navbar-container"></div>
-    Descrição
+  <nav class="bg-cyan-900 flex justify-between items-center w-full h-20">
+    <div class="pl-4">
+      <img class="w-auto h-12" src="/assets/images/logo.png" alt="">
+    </div>
+    <div>
+      <ul class="flex gap-12">
+        <li>
+          <a href="/views/user/index.html" class="hover:text-gray-700" href="">Sobre</a>
+        </li>
+        <li>
+          <a href="/views/user/AtividadesView.html" class="hover:text-gray-700" href="">Atividades</a>
+        </li>
+        <li>
+          <a href="/views/user/AlumniView.html" class="hover:text-gray-700" href="">Alumni</a>
+        </li>
+        <li>
+          <p id="welcomeMessage" class=""></p>
+        </li>
+      </ul>
+    </div>
+    <div class="pr-4">
+      <button id="loginButton" class="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-gray-800">Login</button>
+      <button id="logoutButton" class="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-gray-800 hidden">Logout</button>
+  </nav>
+  <!-- tentar editar info --><p id="description">Descrição TSIW</p>
+
 </body>
 <script type="module" src="/js/user/main.js"></script>
+<script type="module" src="/js/admin/main.js"></script>
+
 </html>

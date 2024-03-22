@@ -1,19 +1,24 @@
-fetch('/components/admin/navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-    });
+let logoutButton = document.getElementById('logout')
+
+function handleLogout() {
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('userRole');
+    window.location.href = '/views/LoginView.html';
+}
+
+logoutButton.addEventListener('click', handleLogout);
+
+const storedFormData = JSON.parse(localStorage.getItem('formData')) || [];
 
 function displayUsers() {
     const userTable = document.getElementById('userTable');
-    const storedFormData = JSON.parse(localStorage.getItem('formData')) || [];
 
     storedFormData.forEach((user, index) => {
         const row = userTable.insertRow(-1);
 
         // Coluna de ID
         const cellId = row.insertCell(0);
-        cellId.textContent = index + 1; 
+        cellId.textContent = index + 1;
 
         // Coluna de E-mail
         const cellEmail = row.insertCell(1);
@@ -35,9 +40,33 @@ function displayUsers() {
     });
 }
 
+let modal = document.getElementById('userDetailsModal')
+let closeModal = document.getElementById('closeModal');
+
 function showDetails(userId) {
-    alert(`Detalhes do usuário com ID ${userId}`);
+    const user = storedFormData[userId - 1];
+
+    if (user) {
+        document.getElementById('modalId').textContent = 'Detalhes do Usuário ' + userId;
+        document.getElementById('modalUserName').textContent = 'Nome: ' + user.name;
+        document.getElementById('modalUserEmail').textContent = 'Email: ' + user.email;
+        document.getElementById('modalUserLocation').textContent = 'Localização: ' + user.location;
+        document.getElementById('modalUserDob').textContent = 'Data De Nascimento: ' + user.dob;
+        document.getElementById('modalUserSex').textContent = 'Gênero: ' + user.sex;
+        modal.style.display = 'block';
+    } else {
+        console.log('Usuário não encontrado');
+    }
+ 
 }
+
+function hideModal() {
+    modal.style.display = 'none';
+}
+
+closeModal.addEventListener('click', hideModal);
+
+
 
 function deleteUser(userId) {
     console.log(`Elimina ${userId}`);
@@ -56,3 +85,21 @@ function refreshTable() {
 }
 
 displayUsers();
+
+
+
+//EDITAR INFO
+/* const descriptionInput = document.getElementById('descriptionInput');
+const saveDescriptionButton = document.getElementById('saveDescriptionButton');
+
+const storedDescription = localStorage.getItem('description');
+if (storedDescription) {
+    descriptionInput.value = storedDescription;
+}
+
+saveDescriptionButton.addEventListener('click', function() {
+    const newDescription = descriptionInput.value;
+    localStorage.setItem('description', newDescription);
+    alert('Description saved successfully!');
+});
+ */

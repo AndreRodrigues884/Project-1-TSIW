@@ -1,16 +1,17 @@
 /* LOGIN */
 
+
 document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     if (isAdmin(email, password)) {
+        localStorage.setItem('isLoggedIn', 'true');
         window.location.href = './admin/index.html';
     } else {
         checkUserLogin(email, password);
     }
-
 });
 
 function checkUserLogin(email, password) {
@@ -20,12 +21,15 @@ function checkUserLogin(email, password) {
     if (user && user.password === password) {
         localStorage.setItem('nameUser', user.name);
         localStorage.setItem('userRole', 'user');
+        localStorage.setItem('isLoggedIn', 'true');
         window.location.href = './user/index.html';
     } else if (user) {
         console.log('Incorrect password. Please try again.');
+        localStorage.setItem('isLoggedIn', 'false');
         loginClearForm();
     } else {
         console.log('Email not found. Please register.');
+        localStorage.setItem('isLoggedIn', 'false');
         loginClearForm();
     }
 
